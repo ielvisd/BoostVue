@@ -24,6 +24,21 @@
 | boost  | Async function that sends a transaction using the wrapRelayx function and handles the onSending, onSuccess, and onError events |   |
 |        |                                                                                                                                |   |
 
+
+## Usage
+
+`
+<BoostButton 
+content="478756843fbd0d3ecaf150e0c67f23481f85560cad3d21ff61cb5472488330b2" 
+:onSuccess="onBoostSuccess"
+size="sm" 
+round 
+outline 
+class="mt-4">
+<p class="text-xl">🦚</p>
+</BoostButton>
+`
+
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
