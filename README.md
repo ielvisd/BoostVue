@@ -28,6 +28,10 @@
 ## Usage
 
 `
+const onBoostSuccess = (response) => {
+  alert('boostpow success!', response)
+}
+
 <BoostButton 
 content="478756843fbd0d3ecaf150e0c67f23481f85560cad3d21ff61cb5472488330b2" 
 :onSuccess="onBoostSuccess"
