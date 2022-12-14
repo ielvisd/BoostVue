@@ -1,6 +1,8 @@
 # BoostVue
-
+You can change the wallet address on line 113 in BoostButton.vue to tip 0.001 USD to an address of your choice when something is boosted. 
 ## Props
+The 'content' prop is the most important prop. It is what you want to "boost". This is usually a transaction id. 
+
 | Property  | Type     | Description                                                                                |   |   |
 |-----------|----------|--------------------------------------------------------------------------------------------|---|---|
 | href      | String   | The URL to link to when the component is clicked, if the component is rendered as an a tag |   |   |
