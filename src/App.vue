@@ -13,7 +13,8 @@ const onBoostSuccess = (response) => {
 
     <div class="wrapper">
       <BoostButton 
-        content="478756843fbd0d3ecaf150e0c67f23481f85560cad3d21ff61cb5472488330b2" 
+        content="ed88eb962c5b204ab409e94e2cbb83168b5fb0a27d1fa7e1e7ec1070b3e9157e" 
+        tag="gopnikz"
         :onSuccess="onBoostSuccess"
         size="sm" 
         round 

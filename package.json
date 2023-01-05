@@ -9,8 +9,10 @@
     "test:unit": "vitest --environment jsdom --root src/"
   },
   "dependencies": {
+    "@esbuild-plugins/node-globals-polyfill": "^0.1.1",
+    "node-stdlib-browser": "^1.2.0",
     "pinia": "^2.0.28",
-    "stag-relayx": "^0.1.1",
+    "stag-relayx": "^0.2.4",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"
   },
@@ -21,6 +23,7 @@
     "jsdom": "^20.0.3",
     "unocss": "^0.47.6",
     "vite": "^4.0.0",
+    "vite-plugin-node-stdlib-browser": "^0.1.1",
     "vitest": "^0.25.6"
   }
 }

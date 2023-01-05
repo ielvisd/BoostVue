@@ -24,6 +24,10 @@ const props = defineProps({
         type: String,
         required: true,
     },
+    tag: {
+        type: String,
+        default: null,
+    },
     onSending: {
         type: Function,
         default: null,
@@ -96,10 +100,12 @@ const boost = () => {
                 if (props.onSending) {
                     props.onSending();
                 }
+                console.log('props are: ', props)
                 const { txid, txhex, job } = await stag.boost.buy({
                     content: props.content,
-                    value: 124_000,
                     difficulty: 0.025,
+                    value: 124_000,
+                    tag: props.tag,
                 });
                 if (props.onSuccess) {
                     props.onSuccess({ txid, txhex, job });
