@@ -6,7 +6,7 @@
     </component>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { ref, computed } from "vue"
 import { wrapRelayx } from 'stag-relayx'
 
@@ -75,7 +75,7 @@ const sizeClasses = computed(() => {
         md: `h-10 ${isIcon ? "px-3" : "px-4"}`,
     };
 
-    return sizeMappings[props.size] || sizeMappings.md;
+    return sizeMappings[props.size as keyof typeof sizeMappings] || sizeMappings.md;
 })
 
 const btnClasses = computed(() => {
