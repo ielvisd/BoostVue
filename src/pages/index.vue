@@ -29,14 +29,14 @@ function onBoostSuccess(response): any {
       <em text-sm op75>Opinionated Vite Starter Template</em>
     </p>
 
-    <BoostButton
+    <BoostVue
       content="ed88eb962c5b204ab409e94e2cbb83168b5fb0a27d1fa7e1e7ec1070b3e9157e" tag="gopnikz"
       :on-success="onBoostSuccess" size="sm" round outline class="mt-4 mx-auto"
     >
       <p class="text-xl">
         🦚
       </p>
-    </BoostButton>
+    </BoostVue>
 
     <div py-4 />
 
