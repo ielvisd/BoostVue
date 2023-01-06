@@ -1,5 +1,11 @@
 {
-    "i18n-ally.localesPaths": [
-        "locales"
-    ]
+  "cSpell.words": ["BoostVue"],
+  "prettier.enable": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "files.associations": {
+    "*.css": "postcss"
+  },
+  "editor.formatOnSave": false
 }

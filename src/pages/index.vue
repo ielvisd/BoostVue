@@ -2,8 +2,8 @@
 defineOptions({
   name: 'IndexPage',
 })
-const user = useUserStore()
-const name = $ref(user.savedName)
+
+const name = $ref('')
 
 const router = useRouter()
 const go = () => {
@@ -11,22 +11,32 @@ const go = () => {
     router.push(`/hi/${encodeURIComponent(name)}`)
 }
 
-const { t } = useI18n()
+function onBoostSuccess(response): any {
+  alert('boostpow success!')
+  console.log('response in onBoostSuccess is: ', response)
+}
 </script>
 
 <template>
   <div>
-    <div text-4xl>
-      <div i-carbon-campsite inline-block />
-    </div>
+    <div i-carbon-campsite text-4xl inline-block />
     <p>
-      <a rel="noreferrer" href="https://github.com/antfu/vitesse" target="_blank">
-        Vitesse
+      <a rel="noreferrer" href="https://github.com/antfu/vitesse-lite" target="_blank">
+        Vitesse Lite
       </a>
     </p>
     <p>
-      <em text-sm opacity-75>{{ t('intro.desc') }}</em>
+      <em text-sm op75>Opinionated Vite Starter Template</em>
     </p>
+
+    <BoostButton
+      content="ed88eb962c5b204ab409e94e2cbb83168b5fb0a27d1fa7e1e7ec1070b3e9157e" tag="gopnikz"
+      :on-success="onBoostSuccess" size="sm" round outline class="mt-4 mx-auto"
+    >
+      <p class="text-xl">
+        🦚
+      </p>
+    </BoostButton>
 
     <div py-4 />
 
@@ -36,21 +46,15 @@ const { t } = useI18n()
       autocomplete="false"
       @keydown.enter="go"
     />
-    <label class="hidden" for="input">{{ t('intro.whats-your-name') }}</label>
 
     <div>
       <button
-        btn m-3 text-sm
+        class="m-3 text-sm btn"
         :disabled="!name"
         @click="go"
       >
-        {{ t('button.go') }}
+        Go
       </button>
     </div>
   </div>
 </template>
-
-<route lang="yaml">
-meta:
-  layout: home
-</route>
