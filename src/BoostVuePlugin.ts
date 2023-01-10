@@ -1,12 +1,11 @@
-import type { App } from 'vue'
-import BoostVue from './components/BoostVueButton.vue'
+import type { App } from "vue";
+import { BoostVueButton } from "./components";
 
 export default {
-  install: (app: App, options: { content: string }) => {
-    app.component('BoostVue', BoostVue)
-    app.provide('content', options?.content)
+  install: (app: App, options: { img: string } = { img: "" }) => {
+    app.component("BoostVueButton", BoostVueButton);
+    app.provide("content", options.content);
   },
-}
+};
 
-export { BoostVue }
-
+export { BoostVueButton };

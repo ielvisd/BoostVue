@@ -1,1 +1,1 @@
-export { default as BoostVue } from './BoostVueButton.vue'
+export { default as BoostVueButton } from "./boost-vue-button.vue";

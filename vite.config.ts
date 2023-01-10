@@ -1,55 +1,52 @@
-/// <reference types="vitest" />
+import { fileURLToPath, URL } from "url";
 
-import path from 'path'
-import { defineConfig } from 'vite'
-import Vue from '@vitejs/plugin-vue'
-import Pages from 'vite-plugin-pages'
-import Components from 'unplugin-vue-components/vite'
-import AutoImport from 'unplugin-auto-import/vite'
-import Unocss from 'unocss/vite'
-import VueMacros from 'unplugin-vue-macros/vite'
+import { defineConfig } from "vite";
+
+import vue from "@vitejs/plugin-vue";
+import typescript2 from "rollup-plugin-typescript2";
 import nodePolyfills from 'vite-plugin-node-stdlib-browser'
+import Unocss from 'unocss/vite'
 
+// https://vitejs.dev/config/
 export default defineConfig({
-  resolve: {
-    alias: {
-      '~/': `${path.resolve(__dirname, 'src')}/`,
-    },
-  },
   plugins: [
-    // Allows usage of Node.js builtins in the browser (https://github.com/vitejs/vite/discussions/2785#discussioncomment-3751927)
+    vue(),
+    // Allow Node.js builtins to be used with Vite - https://github.com/vitejs/vite/discussions/2785#discussioncomment-3751927
     nodePolyfills(),
-    VueMacros({
-      plugins: {
-        vue: Vue({
-          reactivityTransform: true,
-        }),
+    Unocss({ /* options */ }),
+    typescript2({
+      check: false,
+      include: ["src/components/*.vue"],
+      tsconfigOverride: {
+        compilerOptions: {
+          sourceMap: true,
+          declaration: true,
+          declarationMap: true,
+        },
+        exclude: ["vite.config.ts", "main.ts"],
       },
     }),
-
-    // https://github.com/hannoeru/vite-plugin-pages
-    Pages(),
-
-    // https://github.com/antfu/unplugin-auto-import
-    AutoImport({
-      imports: ['vue', 'vue/macros', 'vue-router', '@vueuse/core'],
-      dts: true,
-      dirs: ['./src/composables'],
-      vueTemplate: true,
-    }),
-
-    // https://github.com/antfu/vite-plugin-components
-    Components({
-      dts: true,
-    }),
-
-    // https://github.com/antfu/unocss
-    // see unocss.config.ts for config
-    Unocss(),
   ],
-
-  // https://github.com/vitest-dev/vitest
-  test: {
-    environment: 'jsdom',
+  resolve: {
+    alias: {
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
+    },
   },
-})
+  build: {
+    cssCodeSplit: false,
+    lib: {
+      entry: "./src/ViewerPlugin.ts",
+      formats: ["es", "cjs"],
+      name: "ViwerPlugin",
+      fileName: (format) => (format === "es" ? "index.js" : "index.cjs"),
+    },
+    rollupOptions: {
+      external: ["vue"],
+      output: {
+        globals: {
+          vue: "Vue",
+        },
+      },
+    },
+  },
+});
