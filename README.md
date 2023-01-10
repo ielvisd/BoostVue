@@ -1,46 +1,50 @@
-# v-test-packge
+BoostVue
+========
 
-This template should help get you started developing with Vue 3 in Vite.
+The BoostVue component is in the `components` folder. Will be making this an npm package next. You can change the wallet address on line 113 in BoostButton.vue to tip 0.001 USD to an address of your choice when something is boosted.
 
-## Recommended IDE Setup
+[](https://github.com/ielvisd/BoostVue/tree/63bcf76d0ad7788063f0fa412757ce0304fab368#props)Props
+------------------------------------------------------------------------------------------------
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vscode-typescript-vue-plugin).
+The 'content' prop is the most important prop. It is what you want to "boost". This is usually a transaction id.
 
-## Type Support for `.vue` Imports in TS
+| Property | Type | Description |  |  |
+| --- | --- | --- | --- | --- |
+| href | String | The URL to link to when the component is clicked, if the component is rendered as an a tag |  |  |
+| type | String | The type attribute of the button or a tag |  |  |
+| content | String | A required prop that is used as the content parameter in the wrapRelayx function |  |  |
+| onSending | Function | An event handler that is called when the boost method begins to send a transaction |  |  |
+| onSuccess | Function | An event handler that is called when the boost method successfully sends a transaction |  |  |
+| onError | Function | An event handler that is called when the boost method encounters an error |  |  |
+| onClick | Function | An event handler that is called when the component is clicked |  |  |
+| id | String | The id attribute of the button or a tag |  |  |
+| name | String | The name attribute of the button or a tag |  |  |
+| size | String | The size of the component. Can be sm, md, or lg |  |  |
+| outline | Boolean | If true, the component will have an outlined style instead of a filled style |  |  |
+| icon | Boolean | If true, the component will have a smaller size and padding |  |  |
+| round | Boolean | If true, the component will have rounded corners |  |  |
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+[](https://github.com/ielvisd/BoostVue/tree/63bcf76d0ad7788063f0fa412757ce0304fab368#methods)Methods
+----------------------------------------------------------------------------------------------------
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+| Method | Description |  |
+| --- | --- | --- |
+| boost | Async function that sends a transaction using the wrapRelayx function and handles the onSending, onSuccess, and onError events |  |
+|  |  |  |
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+[](https://github.com/ielvisd/BoostVue/tree/63bcf76d0ad7788063f0fa412757ce0304fab368#usage)Usage
+------------------------------------------------------------------------------------------------
 
-## Customize configuration
+`const onBoostSuccess = (response) => { alert('boostpow success!', response) }`
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
 ```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
+<BoostButton
+content="478756843fbd0d3ecaf150e0c67f23481f85560cad3d21ff61cb5472488330b2"
+:onSuccess="onBoostSuccess"
+size="sm"
+round
+outline
+class="mt-4">
+<p class="text-xl">🦚</p>
+</BoostButton>
 ```
